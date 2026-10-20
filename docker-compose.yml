@@ -1,0 +1,15 @@
+services:
+  freecut:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: freecut-app
+    ports:
+      - "8090:80"
+      - "8443:443"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    # If you need to persist any models downloaded or generated local data,
+    # usually it's in OPFS in browser, but if server needs volumes they can be added here.
+    # Since this is a browser-based app, the backend doesn't store state.
